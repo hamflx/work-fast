@@ -18,7 +18,7 @@ winget install nushell
 ### 一键安装（适用于 CMD 或 PowerShell）
 
 ```powershell
-powershell -c "iwr -useb https://gitlab.vmic.xyz/hamflx/work-fast/-/raw/main/configure.ps1 | iex"
+powershell -c "iwr -useb https://github.com/hamflx/work-fast/-/raw/main/configure.ps1 | iex"
 ```
 
 ### 手动安装
@@ -26,7 +26,7 @@ powershell -c "iwr -useb https://gitlab.vmic.xyz/hamflx/work-fast/-/raw/main/con
 1. 下载脚本：
 
    ```powershell
-   curl -o setup.ps1 https://gitlab.vmic.xyz/hamflx/work-fast/-/raw/main/configure.ps1
+   curl -o setup.ps1 https://github.com/hamflx/work-fast/-/raw/main/configure.ps1
    ```
 
 2. 运行脚本：
