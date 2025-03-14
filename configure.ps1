@@ -44,6 +44,62 @@ if ($fnm_config_downloaded -and $fnm_env_downloaded -and $zoxide_downloaded) {
     Write-Warning "Some configuration files could not be downloaded. Please check the errors above."
 }
 
+# Path to Windows Terminal settings.json
+$wtSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+# Check if Windows Terminal is installed via Microsoft Store
+if (-not (Test-Path -Path $wtSettingsPath)) {
+    # Try alternative path for non-Store installation
+    $wtSettingsPath = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
+}
+
+# Create a backup of the settings file with timestamp
+$timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$backupPath = "$wtSettingsPath.backup_$timestamp"
+
+# Configure Windows Terminal to use Nushell as default profile
+try {
+    if (Test-Path -Path $wtSettingsPath) {
+        Write-Host "Found Windows Terminal settings at $wtSettingsPath"
+        
+        Copy-Item -Path $wtSettingsPath -Destination $backupPath -Force
+        Write-Host "Created backup of Windows Terminal settings at $backupPath"
+        
+        # Read and parse the settings file
+        $wtSettings = Get-Content -Path $wtSettingsPath -Raw -Encoding UTF8 | ConvertFrom-Json
+        
+        # Find the Nushell profile
+        $nushellProfile = $wtSettings.profiles.list | Where-Object { $_.name -like "nushell" } | Select-Object -First 1
+        
+        if ($nushellProfile) {
+            $nushellGuid = $nushellProfile.guid
+            Write-Host "Found Nushell profile with GUID: $nushellGuid"
+            
+            # Set Nushell as the default profile
+            $wtSettings.defaultProfile = $nushellGuid
+            
+            # Save the updated settings
+            $wtSettings | ConvertTo-Json -Depth 100 | Set-Content -Path $wtSettingsPath -Encoding UTF8
+            Write-Host "Updated Windows Terminal settings to use Nushell as the default profile"
+        } else {
+            Write-Warning "Could not find a Nushell profile in Windows Terminal settings"
+        }
+    } else {
+        Write-Warning "Windows Terminal settings file not found. Make sure Windows Terminal is installed."
+    }
+} catch {
+    Write-Warning "Failed to update Windows Terminal settings: $_"
+    
+    # Try to restore from backup if it exists
+    if (Test-Path -Path $backupPath) {
+        try {
+            Copy-Item -Path $backupPath -Destination $wtSettingsPath -Force
+            Write-Host "Restored Windows Terminal settings from backup"
+        } catch {
+            Write-Warning "Failed to restore Windows Terminal settings from backup: $_"
+        }
+    }
+}
+
 # Define the content for nushell config
 $config_content = @"
 source ~/.fnm-config.nu

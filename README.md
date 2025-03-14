@@ -7,6 +7,7 @@
 请先安装以下必要工具：
 
 ```powershell
+winget install Microsoft.WindowsTerminal
 winget install Schniz.fnm
 winget install ajeetdsouza.zoxide
 winget install nushell
