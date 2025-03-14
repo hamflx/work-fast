@@ -2,6 +2,16 @@
 
 本仓库包含用于增强 Nushell 环境的配置文件，集成了 fnm（Fast Node Manager，快速 Node 版本管理器）和 zoxide（智能 cd 命令）。
 
+## 前置条件
+
+请先安装以下必要工具：
+
+```powershell
+winget install Schniz.fnm
+winget install ajeetdsouza.zoxide
+winget install nushell
+```
+
 ## 快速安装
 
 ### 一键安装（适用于 CMD 或 PowerShell）
@@ -34,7 +44,7 @@ powershell -c "iwr -useb https://gitlab.vmic.xyz/hamflx/work-fast/-/raw/main/con
 
 - Windows 操作系统
 - PowerShell
-- Nushell（如果取消脚本中相关行的注释，脚本可以帮您安装）
+- Nushell、fnm 和 zoxide（请使用上述命令安装）
 
 ## 常见问题
 

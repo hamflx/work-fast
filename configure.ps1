@@ -1,7 +1,3 @@
-# winget install Schniz.fnm
-# winget install ajeetdsouza.zoxide
-# winget install nushell
-
 # GitLab repository information
 $gitlab_repo = "https://gitlab.vmic.xyz/hamflx/work-fast"
 $gitlab_raw_base_url = "$gitlab_repo/-/raw/main"
