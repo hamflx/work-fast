@@ -35,6 +35,57 @@ powershell -c "iwr -useb https://gitlab.vmic.xyz/hamflx/work-fast/-/raw/main/con
    .\setup.ps1
    ```
 
+## 常用快捷键
+
+### Windows Terminal 快捷键
+
+#### 标签页操作
+
+- `Ctrl + Shift + T` - 新建标签页
+- `Ctrl + Shift + W` - 关闭当前标签页
+- `Ctrl + Tab` - 切换到下一个标签页
+- `Ctrl + Shift + Tab` - 切换到上一个标签页
+
+#### 窗口分割
+
+- `Alt + Shift + -` - 水平分割面板
+- `Alt + Shift + +` - 垂直分割面板
+- `Alt + 方向键` - 在面板之间切换焦点
+- `Alt + Shift + 方向键` - 调整当前面板大小
+- `Ctrl + Shift + W` - 关闭当前面板
+
+#### 其他操作
+
+- `Ctrl + Shift + F` - 查找文本
+- `Ctrl + Shift + Space` - 打开下拉菜单
+- `Alt + Enter` - 切换全屏
+- `Ctrl + Shift + C` - 复制
+- `Ctrl + Shift + V` - 粘贴
+
+### Nushell 快捷键
+
+#### 命令行编辑
+
+- `Ctrl + A` - 移动到行首
+- `Ctrl + E` - 移动到行尾
+- `Ctrl + U` - 清除当前行
+- `Ctrl + L` - 清屏
+- `Ctrl + R` - 搜索命令历史
+- `Ctrl + W` - 删除前一个单词
+- `Alt + B` - 向后移动一个单词
+- `Alt + F` - 向前移动一个单词
+
+#### 目录导航 (zoxide)
+
+- `z 关键词` - 快速跳转到匹配的目录
+- `zi` - 交互式选择并跳转到目录
+
+#### Node.js 版本管理 (fnm)
+
+- `fnm list` - 列出已安装的 Node.js 版本
+- `fnm use` - 切换 Node.js 版本（会自动读取 .nvmrc 或 .node-version 文件）
+- `fnm install` - 安装指定版本的 Node.js
+
 ## 功能介绍
 
 - 将 fnm 和 zoxide 的配置文件下载到您的用户目录
