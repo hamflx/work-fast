@@ -1,6 +1,6 @@
 # GitLab repository information
 $gitlab_repo = "https://github.com/hamflx/work-fast"
-$gitlab_raw_base_url = "$gitlab_repo/-/raw/main"
+$gitlab_raw_base_url = "$gitlab_repo/raw/main"
 
 # Define the file paths in the GitLab repository
 $fnm_config_repo_path = "profile/.fnm-config.nu"
